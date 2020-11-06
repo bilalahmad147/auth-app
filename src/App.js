@@ -1,10 +1,9 @@
 import React from 'react'
-import ImageUpload from './Components/ImageUpload/imageUpload'
 
 function App() {
   return (
-    <div>
-      <ImageUpload />
+    <div className="App">
+      <h1>hello world</h1>
     </div>
   );
 }
