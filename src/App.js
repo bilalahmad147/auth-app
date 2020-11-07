@@ -8,11 +8,11 @@ function App() {
   const [imageAsUrl, setImageAsUrl] = useState(allInputs)
 
   console.log(imageAsFile)
-  const handleImgFile = (e) => {
-    if (e.target.file[0]) {
-      setImageAsFile(e.target.file[0] )
-    }
-  }
+  const handleImageAsFile = (e) => {
+    const image = e.target.files[0]
+    console.log(image)
+    setImageAsFile(imageFile => (image))
+}
 
   const handleFireBaseUpload = e => {
     e.preventDefault()
@@ -45,7 +45,7 @@ function App() {
     <div className="App">
       <h1>blank and ready for image upload.</h1>
       <form onSubmit={handleFireBaseUpload}>
-        <input onChange={() => { handleImgFile() }} type="file" /><br />
+        <input onChange={() => { handleImageAsFile() }} type="file" /><br />
         <button>upload to firebase</button>
       </form>
       <img src={imageAsUrl.imgUrl} alt="image tag" />
