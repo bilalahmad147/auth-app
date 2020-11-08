@@ -1,13 +1,9 @@
 import React, { useState } from 'react'
+import FileForImage from './FileForImage'
 import { storage } from './Firebase/firebase'
 
 function App() {
 
-  const allInputs = { imgUrl: '' }
-  const [imageAsFile, setImageAsFile] = useState('')
-  const [imageAsUrl, setImageAsUrl] = useState(allInputs)
-
-  console.log(imageAsFile)
   const handleImageAsFile = (e) => {
     const image = e.target.files[0]
     console.log(image)
@@ -44,14 +40,21 @@ function App() {
   }
 
   return (
-
-    <div className="App">
-      <h1>blank and ready for image upload.</h1>
-      <form onSubmit={handleFireBaseUpload}>
-        <input value={imageAsFile} onChange={(e) => handleImageAsFile(e)} type="file" /><br />
-        <button>upload to firebase</button>
-      </form>
-      <img src={imageAsUrl.imgUrl} alt="upload pic" />
+    <div>
+      <div className="App">
+        <h1>blank and ready for image upload.</h1>
+        <form onSubmit={handleFireBaseUpload}>
+          <input onChange={(e) => handleImageAsFile(e)} type="file" /><br />
+          {/* <button>upload to firebase</button> */}
+        </form>
+        {/* <img src={imageAsUrl.imgUrl} alt="upload pic" /> */}
+      </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <FileForImage />
     </div>
   );
 }
