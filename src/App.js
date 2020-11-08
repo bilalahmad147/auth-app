@@ -8,11 +8,11 @@ function App() {
   const [imageAsUrl, setImageAsUrl] = useState(allInputs)
 
   console.log(imageAsFile)
-  const handleImageAsFile = (e) => {
-    const image = e.target.files[0]
-    console.log(image)
-    setImageAsFile(imageFile => (image))
-}
+  //   const handleImageAsFile = (e) => {
+  //     const image = e.target.files[0]
+  //     console.log(image)
+  //     setImageAsFile(imageFile => (image))
+  // }
 
   const handleFireBaseUpload = e => {
     e.preventDefault()
@@ -29,8 +29,8 @@ function App() {
         console.log(snapShot)
       }, (err) => {
         //catches the errors
-        console.log(err)
-      }, () => {
+        console.log(err, 'here is error occured')
+      },() => {
         // gets the functions from storage refences the image storage in firebase by the children
         // gets the download url then sets the image from firebase as the value for the imgUrl key:
         storage.ref('images').child(imageAsFile.name).getDownloadURL()
@@ -45,10 +45,10 @@ function App() {
     <div className="App">
       <h1>blank and ready for image upload.</h1>
       <form onSubmit={handleFireBaseUpload}>
-        <input onChange={() => { handleImageAsFile() }} type="file" /><br />
+        <input value={imageAsFile} onChange={(e) => { setImageAsFile(e.target.value) }} type="file" /><br />
         <button>upload to firebase</button>
       </form>
-      <img src={imageAsUrl.imgUrl} alt="image tag" />
+      <img src={imageAsUrl.imgUrl} alt="upload pic" />
     </div>
   );
 }
