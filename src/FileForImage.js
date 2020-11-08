@@ -43,7 +43,7 @@ function FileForImage() {
                 <button>Upload Image</button>
             </form>
             <br />
-            <img width='150' height='150' alt='imageWasUploaded' src={imageAsUrl.imgUrl} />
+            <img width='350' height='auto' alt='imageWasUploaded' src={imageAsUrl.imgUrl} />
         </div>
     )
 }
